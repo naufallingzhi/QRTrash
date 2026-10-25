@@ -41,6 +41,11 @@ class activity_main : AppCompatActivity() {
             val intent = Intent(this, activity_activity::class.java)
             startActivity(intent)
         }
+        // Navigasi ke halaman Peta TPS
+        binding.navPeta.setOnClickListener {
+            val intent = Intent(this, petatps::class.java)
+            startActivity(intent)
+        }
 
         // 4. Menu Dropdown (PopupMenu) saat menekan Foto Profil di pojok kiri atas
         binding.cardAvatarContainer.setOnClickListener { view ->

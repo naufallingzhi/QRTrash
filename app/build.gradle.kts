@@ -50,4 +50,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.4")
+    implementation("com.github.bumptech.glide:glide:4.16.0")
 }

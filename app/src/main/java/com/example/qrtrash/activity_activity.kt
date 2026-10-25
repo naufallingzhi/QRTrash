@@ -37,11 +37,21 @@ class activity_activity : AppCompatActivity() {
             setHomeAsUpIndicator(backIcon)
         }
 
-        // 2. Menampilkan fragment1 secara default saat halaman dibuka (Modul 6 Tahap 4.5)
+        // 2. Menampilkan fragment1 secara default saat halaman pertama kali dibuka
         replaceFragment(fragment1(), addToBackStack = false)
         aturWarnaTombolAktif(1)
 
-        // 3. Event klik tombol untuk mengganti Fragment1, Fragment2, dan Fragment3
+        // 3. Listener BackStack: Sinkronkan tombol atas saat tombol Back ditekan
+        supportFragmentManager.addOnBackStackChangedListener {
+            val currentFragment = supportFragmentManager.findFragmentById(binding.fragmentContainer.id)
+            when (currentFragment) {
+                is fragment1 -> aturWarnaTombolAktif(1)
+                is fragment2 -> aturWarnaTombolAktif(2)
+                is fragment3 -> aturWarnaTombolAktif(3)
+            }
+        }
+
+        // 4. Event klik tombol untuk mengganti Fragment1, Fragment2, dan Fragment3
         binding.btnStatusPending.setOnClickListener {
             replaceFragment(fragment1())
             aturWarnaTombolAktif(1)
@@ -57,8 +67,14 @@ class activity_activity : AppCompatActivity() {
             aturWarnaTombolAktif(3)
         }
 
-        // 4. Klik menu Beranda di Bottom Navigation untuk kembali ke Dashboard
+        // 5. Navigasi Bottom Navigation
         binding.navBeranda.setOnClickListener {
+            finish()
+        }
+
+        binding.navPeta.setOnClickListener {
+            val intent = android.content.Intent(this, petatps::class.java)
+            startActivity(intent)
             finish()
         }
     }
@@ -71,7 +87,7 @@ class activity_activity : AppCompatActivity() {
         transaction.commit()
     }
 
-    // Fungsi tambahan agar warna tombol berubah mengikuti Fragment yang sedang aktif
+    // Fungsi mengatur warna tombol aktif
     private fun aturWarnaTombolAktif(nomorTombol: Int) {
         val warnaAktifBg = ColorStateList.valueOf(Color.parseColor("#22C55E"))
         val warnaNonAktifBg = ColorStateList.valueOf(Color.parseColor("#DCFCE7"))

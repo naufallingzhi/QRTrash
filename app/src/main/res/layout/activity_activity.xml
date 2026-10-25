@@ -9,94 +9,109 @@
     android:fitsSystemWindows="true"
     tools:context=".activity_activity">
 
-    <!-- ================= HEADER: TOOLBAR RAPI ================= -->
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="?attr/actionBarSize"
-        android:background="#15803D"
-        android:paddingVertical="6dp"
-        app:titleTextColor="@android:color/white"
-        app:subtitleTextColor="#DCFCE7"
-        app:contentInsetStartWithNavigation="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!-- ================= TOMBOL FILTER STATUS ================= -->
-    <Button
-        android:id="@+id/btnStatusPending"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="4dp"
-        android:backgroundTint="#22C55E"
-        android:fontFamily="@font/monasansbold"
-        android:insetTop="0dp"
-        android:insetBottom="0dp"
-        android:paddingHorizontal="4dp"
-        android:text="Pending"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:textSize="12sp"
-        app:cornerRadius="12dp"
-        app:layout_constraintEnd_toStartOf="@+id/btnStatusDiproses"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
-
-    <Button
-        android:id="@+id/btnStatusDiproses"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="4dp"
-        android:backgroundTint="#DCFCE7"
-        android:fontFamily="@font/monasanssemibold"
-        android:insetTop="0dp"
-        android:insetBottom="0dp"
-        android:paddingHorizontal="4dp"
-        android:text="Diterima"
-        android:textAllCaps="false"
-        android:textColor="#15803D"
-        android:textSize="12sp"
-        app:cornerRadius="12dp"
-        app:layout_constraintEnd_toStartOf="@+id/btnStatusSelesai"
-        app:layout_constraintStart_toEndOf="@+id/btnStatusPending"
-        app:layout_constraintTop_toTopOf="@+id/btnStatusPending" />
-
-    <Button
-        android:id="@+id/btnStatusSelesai"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="24dp"
-        android:backgroundTint="#DCFCE7"
-        android:fontFamily="@font/monasanssemibold"
-        android:insetTop="0dp"
-        android:insetBottom="0dp"
-        android:paddingHorizontal="4dp"
-        android:text="Selesai"
-        android:textAllCaps="false"
-        android:textColor="#15803D"
-        android:textSize="12sp"
-        app:cornerRadius="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnStatusDiproses"
-        app:layout_constraintTop_toTopOf="@+id/btnStatusPending" />
-
-    <!-- ================= WADAH FRAGMENT ================= -->
-    <FrameLayout
-        android:id="@+id/fragment_container"
+    <!-- ================= COORDINATOR LAYOUT & SCROLL TOOLBAR (MODUL 5 & 7) ================= -->
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinatorLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="12dp"
         app:layout_constraintBottom_toTopOf="@+id/fabMainScanOuter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnStatusPending" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#F4FBF7"
+            app:elevation="0dp">
+
+            <!-- Toolbar dengan scrollFlags="scroll|enterAlways" agar otomatis sembunyi saat di-scroll -->
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#15803D"
+                android:minHeight="?attr/actionBarSize"
+                android:paddingVertical="6dp"
+                app:contentInsetStartWithNavigation="0dp"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:subtitleTextColor="#DCFCE7"
+                app:titleTextColor="@android:color/white" />
+
+            <!-- Baris 3 Tombol Filter Status -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingHorizontal="24dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="8dp"
+                android:weightSum="3">
+
+                <Button
+                    android:id="@+id/btnStatusPending"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#22C55E"
+                    android:fontFamily="@font/monasansbold"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:paddingHorizontal="4dp"
+                    android:text="Pending"
+                    android:textAllCaps="false"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    app:cornerRadius="12dp" />
+
+                <Button
+                    android:id="@+id/btnStatusDiproses"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginHorizontal="4dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#DCFCE7"
+                    android:fontFamily="@font/monasanssemibold"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:paddingHorizontal="4dp"
+                    android:text="Diterima"
+                    android:textAllCaps="false"
+                    android:textColor="#15803D"
+                    android:textSize="12sp"
+                    app:cornerRadius="12dp" />
+
+                <Button
+                    android:id="@+id/btnStatusSelesai"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#DCFCE7"
+                    android:fontFamily="@font/monasanssemibold"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:paddingHorizontal="4dp"
+                    android:text="Selesai"
+                    android:textAllCaps="false"
+                    android:textColor="#15803D"
+                    android:textSize="12sp"
+                    app:cornerRadius="12dp" />
+            </LinearLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <!-- Wadah Fragment dengan layout_behavior agar terhubung dengan scroll AppBarLayout -->
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="8dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <!-- ================= FLOATING BOTTOM NAVIGATION BAR ================= -->
     <com.google.android.material.card.MaterialCardView
