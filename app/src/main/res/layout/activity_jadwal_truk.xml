@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4FBF7"
+    android:fitsSystemWindows="true"
+    tools:context=".JadwalTrukActivity">
+
+    <!-- 1. Toolbar Atas -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#15803D"
+        android:minHeight="?attr/actionBarSize"
+        android:paddingVertical="6dp"
+        app:contentInsetStartWithNavigation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:subtitleTextColor="#DCFCE7"
+        app:titleTextColor="@android:color/white" />
+
+    <!-- 2. TabLayout 7 Hari dengan Kustomisasi Atribut (Modul 10 Tahap 1.1 & 2.2) -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#15803D"
+        app:tabMode="scrollable"
+        app:tabTextColor="#BBF7D0"
+        app:tabSelectedTextColor="#FFFFFF"
+        app:tabIconTint="#FFFFFF"
+        app:tabIndicatorColor="#4ADE80"
+        app:tabIndicatorHeight="4dp"
+        app:tabIndicatorFullWidth="false"
+        app:tabRippleColor="#33FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <!-- 3. ViewPager2 mengisi sisa layar di bawah TabLayout (Modul 10 Tahap 1.1) -->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tab_layout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:fitsSystemWindows="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F4FBF7"
+    android:fitsSystemWindows="true"
     tools:context=".activity_main">
 
     <!-- ================= KONTEN UTAMA (SCROLLABLE) ================= -->
@@ -24,22 +24,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <!-- 1. BACKGROUND HEADER WAVE (MODUL 9) -->
+            <View
+                android:id="@+id/background_header"
+                android:layout_width="0dp"
+                android:layout_height="230dp"
+                android:background="@drawable/bg_header_wave"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <!-- ================= HEADER: PROFIL & NOTIFIKASI ================= -->
-            <!-- Kotak Putih Pembungkus Avatar -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardAvatarContainer"
                 android:layout_width="56dp"
                 android:layout_height="56dp"
                 android:layout_marginStart="24dp"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="24dp"
                 app:cardBackgroundColor="#FFFFFF"
                 app:cardCornerRadius="18dp"
                 app:cardElevation="6dp"
-                app:strokeWidth="0dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                app:strokeWidth="0dp">
 
-                <!-- Lingkaran Dalam Avatar -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="42dp"
                     android:layout_height="42dp"
@@ -49,7 +57,6 @@
                     app:cardElevation="0dp"
                     app:strokeWidth="0dp">
 
-                    <!-- TEMPLATE GAMBAR 1: Ganti src dengan foto profil/avatar kamu -->
                     <ImageView
                         android:id="@+id/ivAvatar"
                         android:layout_width="match_parent"
@@ -80,7 +87,7 @@
                 android:layout_marginTop="2dp"
                 android:fontFamily="@font/monasanssemibold"
                 android:text="Pekanbaru, Riau"
-                android:textColor="#475569"
+                android:textColor="#15803D"
                 android:textSize="11sp"
                 app:layout_constraintBottom_toBottomOf="@+id/cardAvatarContainer"
                 app:layout_constraintStart_toStartOf="@+id/tvGreeting"
@@ -94,19 +101,18 @@
                 app:cardBackgroundColor="#FFFFFF"
                 app:cardCornerRadius="14dp"
                 app:cardElevation="6dp"
-                app:strokeWidth="0dp"
                 app:layout_constraintBottom_toBottomOf="@+id/cardAvatarContainer"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/cardAvatarContainer">
+                app:layout_constraintTop_toTopOf="@+id/cardAvatarContainer"
+                app:strokeWidth="0dp">
 
-                <!-- TEMPLATE GAMBAR 2: Ganti src dengan icon lonceng notifikasi -->
                 <ImageView
                     android:id="@+id/ivNotification"
                     android:layout_width="22dp"
                     android:layout_height="22dp"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_notification"
-                    app:tint="#64748B" />
+                    app:tint="#15803D" />
             </com.google.android.material.card.MaterialCardView>
 
             <!-- ================= KARTU BANNER HIJAU ================= -->
@@ -119,10 +125,10 @@
                 app:cardBackgroundColor="#15803D"
                 app:cardCornerRadius="24dp"
                 app:cardElevation="8dp"
-                app:strokeWidth="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardAvatarContainer">
+                app:layout_constraintTop_toBottomOf="@+id/cardAvatarContainer"
+                app:strokeWidth="0dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -136,10 +142,10 @@
                         app:cardBackgroundColor="#1E9E52"
                         app:cardCornerRadius="50dp"
                         app:cardElevation="0dp"
-                        app:strokeColor="#4ADE80"
-                        app:strokeWidth="1dp"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:strokeColor="#4ADE80"
+                        app:strokeWidth="1dp">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -180,7 +186,6 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tvBannerTitle" />
 
-                    <!-- Tombol Scan di dalam Banner -->
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/btnScanBanner"
                         android:layout_width="match_parent"
@@ -189,8 +194,8 @@
                         app:cardBackgroundColor="#FFFFFF"
                         app:cardCornerRadius="14dp"
                         app:cardElevation="0dp"
-                        app:strokeWidth="0dp"
-                        app:layout_constraintTop_toBottomOf="@+id/tvBannerDesc">
+                        app:layout_constraintTop_toBottomOf="@+id/tvBannerDesc"
+                        app:strokeWidth="0dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -204,12 +209,11 @@
                                 app:cardBackgroundColor="#22C55E"
                                 app:cardCornerRadius="10dp"
                                 app:cardElevation="0dp"
-                                app:strokeWidth="0dp"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent">
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:strokeWidth="0dp">
 
-                                <!-- TEMPLATE GAMBAR 3: Ganti src dengan icon QR Code -->
                                 <ImageView
                                     android:id="@+id/ivScanIconCard"
                                     android:layout_width="20dp"
@@ -231,7 +235,6 @@
                                 app:layout_constraintStart_toEndOf="@+id/boxQrIcon"
                                 app:layout_constraintTop_toTopOf="parent" />
 
-                            <!-- TEMPLATE GAMBAR 4: Ganti src dengan icon panah kanan (chevron right) -->
                             <ImageView
                                 android:layout_width="18dp"
                                 android:layout_height="18dp"
@@ -255,11 +258,11 @@
                 app:cardBackgroundColor="#ECFDF5"
                 app:cardCornerRadius="14dp"
                 app:cardElevation="0dp"
-                app:strokeColor="#86EFAC"
-                app:strokeWidth="1dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardBanner">
+                app:layout_constraintTop_toBottomOf="@+id/cardBanner"
+                app:strokeColor="#86EFAC"
+                app:strokeWidth="1dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -269,12 +272,11 @@
                     android:paddingHorizontal="14dp"
                     android:paddingVertical="12dp">
 
-                    <!-- TEMPLATE GAMBAR 5: Ganti src dengan icon bintang/sparkle -->
                     <ImageView
                         android:layout_width="22dp"
                         android:layout_height="22dp"
                         android:src="@android:drawable/ic_menu_info_details"
-                        app:tint="#94A3B8" />
+                        app:tint="#16A34A" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -284,10 +286,146 @@
                         android:fontFamily="@font/monasansregular"
                         android:lineSpacingExtra="2dp"
                         android:text="Terima kasih! Anda sudah membantu menjaga 8 titik fasilitas kota."
-                        android:textColor="#94A3B8"
+                        android:textColor="#475569"
                         android:textSize="11sp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
+
+            <!-- ================= 2. GRID LAYOUT: 6 MENU PETAK (MODUL 9 TAHAP 4) ================= -->
+            <TextView
+                android:id="@+id/tvMenuGridSub"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/monasanssemibold"
+                android:text="Menu Pintasan"
+                android:textColor="#22C55E"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardInfo" />
+
+            <TextView
+                android:id="@+id/tvMenuGridTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/monasansbold"
+                android:text="Layanan QRTrash"
+                android:textColor="#1E293B"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@+id/tvMenuGridSub"
+                app:layout_constraintTop_toBottomOf="@+id/tvMenuGridSub" />
+
+            <androidx.gridlayout.widget.GridLayout
+                android:id="@+id/gridMenu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="18dp"
+                android:layout_marginTop="8dp"
+                app:columnCount="3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvMenuGridTitle"
+                app:useDefaultMargins="true">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnGrid1"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:backgroundTint="#DCFCE7"
+                    android:fontFamily="@font/monasansbold"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="TPS Penuh"
+                    android:textAllCaps="false"
+                    android:textColor="#15803D"
+                    android:textSize="11sp"
+                    app:cornerRadius="14dp"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnGrid2"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:backgroundTint="#DCFCE7"
+                    android:fontFamily="@font/monasansbold"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="Bak Rusak"
+                    android:textAllCaps="false"
+                    android:textColor="#15803D"
+                    android:textSize="11sp"
+                    app:cornerRadius="14dp"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnGrid3"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:backgroundTint="#DCFCE7"
+                    android:fontFamily="@font/monasansbold"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="Sampah Liar"
+                    android:textAllCaps="false"
+                    android:textColor="#15803D"
+                    android:textSize="11sp"
+                    app:cornerRadius="14dp"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnGrid4"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:backgroundTint="#DCFCE7"
+                    android:fontFamily="@font/monasansbold"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="Jadwal Truk"
+                    android:textAllCaps="false"
+                    android:textColor="#15803D"
+                    android:textSize="11sp"
+                    app:cornerRadius="14dp"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnGrid5"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:backgroundTint="#DCFCE7"
+                    android:fontFamily="@font/monasansbold"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="Bank Sampah"
+                    android:textAllCaps="false"
+                    android:textColor="#15803D"
+                    android:textSize="11sp"
+                    app:cornerRadius="14dp"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnGridTutorial"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:backgroundTint="#DCFCE7"
+                    android:fontFamily="@font/monasansbold"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="Tutorial App"
+                    android:textAllCaps="false"
+                    android:textColor="#15803D"
+                    android:textSize="11sp"
+                    app:cornerRadius="14dp"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal" />
+
+            </androidx.gridlayout.widget.GridLayout>
 
             <!-- ================= SEKSI LAPORAN SAYA ================= -->
             <TextView
@@ -295,13 +433,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/monasanssemibold"
                 android:text="Ringkasan bulan ini"
                 android:textColor="#22C55E"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardInfo" />
+                app:layout_constraintTop_toBottomOf="@+id/gridMenu" />
 
             <TextView
                 android:id="@+id/tvStatsTitle"
@@ -366,11 +504,10 @@
                             app:cardBackgroundColor="#FEF3C7"
                             app:cardCornerRadius="10dp"
                             app:cardElevation="0dp"
-                            app:strokeWidth="0dp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:strokeWidth="0dp">
 
-                            <!-- TEMPLATE GAMBAR 6: Ganti src dengan icon jam kuning -->
                             <ImageView
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
@@ -442,11 +579,10 @@
                             app:cardBackgroundColor="#DCFCE7"
                             app:cardCornerRadius="10dp"
                             app:cardElevation="0dp"
-                            app:strokeWidth="0dp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:strokeWidth="0dp">
 
-                            <!-- TEMPLATE GAMBAR 7: Ganti src dengan icon centang hijau -->
                             <ImageView
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
@@ -509,10 +645,10 @@
         app:cardBackgroundColor="#FFFFFF"
         app:cardCornerRadius="28dp"
         app:cardElevation="12dp"
-        app:strokeWidth="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeWidth="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -520,7 +656,6 @@
             android:orientation="horizontal"
             android:weightSum="5">
 
-            <!-- Menu 1: Beranda -->
             <LinearLayout
                 android:id="@+id/navBeranda"
                 android:layout_width="0dp"
@@ -529,7 +664,6 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <!-- TEMPLATE GAMBAR 8: Ganti src dengan icon Beranda (Home) -->
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
@@ -546,7 +680,6 @@
                     android:textSize="10sp" />
             </LinearLayout>
 
-            <!-- Menu 2: Aktivitas -->
             <LinearLayout
                 android:id="@+id/navAktivitas"
                 android:layout_width="0dp"
@@ -555,7 +688,6 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <!-- TEMPLATE GAMBAR 9: Ganti src dengan icon Aktivitas (Jam) -->
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
@@ -572,13 +704,11 @@
                     android:textSize="10sp" />
             </LinearLayout>
 
-            <!-- Ruang Kosong untuk Tombol QR di Tengah -->
             <View
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
-            <!-- Menu 4: Peta TPS -->
             <LinearLayout
                 android:id="@+id/navPeta"
                 android:layout_width="0dp"
@@ -587,7 +717,6 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <!-- TEMPLATE GAMBAR 10: Ganti src dengan icon Peta (Pin Lokasi) -->
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
@@ -604,7 +733,6 @@
                     android:textSize="10sp" />
             </LinearLayout>
 
-            <!-- Menu 5: Profil -->
             <LinearLayout
                 android:id="@+id/navProfil"
                 android:layout_width="0dp"
@@ -613,7 +741,6 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <!-- TEMPLATE GAMBAR 11: Ganti src dengan icon Profil (User) -->
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
@@ -634,7 +761,6 @@
     </com.google.android.material.card.MaterialCardView>
 
     <!-- ================= TOMBOL QR MELAYANG DI TENGAH ================= -->
-    <!-- Bingkai Luar Putih/Abu-abu Lembut -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/fabMainScanOuter"
         android:layout_width="68dp"
@@ -643,12 +769,11 @@
         app:cardBackgroundColor="#F8FAFC"
         app:cardCornerRadius="20dp"
         app:cardElevation="16dp"
-        app:strokeWidth="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeWidth="0dp">
 
-        <!-- Kotak Dalam Hijau Terang -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/fabMainScan"
             android:layout_width="54dp"
@@ -659,12 +784,11 @@
             app:cardElevation="0dp"
             app:strokeWidth="0dp">
 
-            <!-- TEMPLATE GAMBAR 12: Ganti src dengan icon QR Scanner utama -->
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_qr"/>
+                android:src="@drawable/ic_qr" />
         </com.google.android.material.card.MaterialCardView>
     </com.google.android.material.card.MaterialCardView>
 

@@ -52,4 +52,10 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.4")
     implementation("com.github.bumptech.glide:glide:4.16.0")
+    implementation("androidx.gridlayout:gridlayout:1.0.0")
+    implementation("androidx.viewpager2:viewpager2:1.1.0")
+    implementation("com.tbuonomo:dotsindicator:5.1.0")
+
+    // Dependency Baru Modul 10 (RecyclerView)
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
 }

@@ -17,7 +17,7 @@ class splashscreen : AppCompatActivity() {
         binding = ActivitySplashscreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Menahan layar SplashScreen selama 2 detik menggunakan Coroutine (Modul 6 Tahap 3.4)
+        // Menahan layar SplashScreen selama 2 detik menggunakan Coroutine
         lifecycleScope.launch {
             delay(2000)
 
@@ -25,16 +25,17 @@ class splashscreen : AppCompatActivity() {
             val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
             val isLogin = sharedPref.getBoolean("isLogin", false)
 
+            // Alur Baru:
             // Jika sudah login -> langsung ke Dashboard (activity_main)
-            // Jika belum login -> ke halaman Login (MainActivity)
+            // Jika belum login -> ke halaman Tutorial (TutorialActivity) dulu sebelum Login
             val target = if (isLogin) {
                 activity_main::class.java
             } else {
-                MainActivity::class.java
+                TutorialActivity::class.java
             }
 
             startActivity(Intent(this@splashscreen, target))
-            finish() // Menutup SplashScreen agar tidak kembali saat tombol back ditekan
+            finish()
         }
     }
 }

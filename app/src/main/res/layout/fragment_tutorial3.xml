@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/tutorial_yellow_light">
+
+    <ImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="140dp"
+        android:src="@drawable/ic_peta"
+        app:tint="#D97706"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/monasansbold"
+        android:gravity="center"
+        android:text="Wujudkan Pekanbaru Bersih!"
+        android:textColor="#B45309"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgLogo" />
+
+    <TextView
+        android:id="@+id/tvDesc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/monasansregular"
+        android:gravity="center"
+        android:lineSpacingExtra="4dp"
+        android:text="Cek sebaran titik TPS terdekat lewat menu Peta TPS. Mari berkolaborasi menjaga lingkungan kota Pekanbaru tetap bersih dan nyaman."
+        android:textColor="#334155"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

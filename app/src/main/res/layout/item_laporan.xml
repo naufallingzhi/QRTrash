@@ -1,112 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingHorizontal="4dp"
-    android:paddingVertical="6dp">
+    android:layout_marginHorizontal="4dp"
+    android:layout_marginBottom="10dp"
+    app:cardBackgroundColor="#F8FAFC"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="2dp"
+    app:strokeColor="#E2E8F0"
+    app:strokeWidth="1dp">
 
-    <com.google.android.material.card.MaterialCardView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="#FFFFFF"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="2dp"
-        app:strokeColor="#E2E8F0"
-        app:strokeWidth="1dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:padding="12dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardThumb"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/ivFotoLaporan"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/logoaplikasi" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/tvLokasiTps"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:padding="14dp">
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/monasansbold"
+            android:maxLines="1"
+            android:text="Nama TPS"
+            android:textColor="#0F172A"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toStartOf="@+id/cardBadgeStatus"
+            app:layout_constraintStart_toEndOf="@+id/cardThumb"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <!-- Foto Bukti / Ikon TPS dari URL (Glide) -->
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardImg"
-                android:layout_width="54dp"
-                android:layout_height="54dp"
-                app:cardBackgroundColor="#ECFDF5"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="0dp"
-                app:strokeWidth="0dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:id="@+id/tvKendala"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/monasansregular"
+            android:maxLines="2"
+            android:text="Kendala tempat sampah"
+            android:textColor="#475569"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tvLokasiTps"
+            app:layout_constraintTop_toBottomOf="@+id/tvLokasiTps" />
 
-                <ImageView
-                    android:id="@+id/avatarImg"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:contentDescription="Foto Laporan TPS"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/logoaplikasi" />
-            </com.google.android.material.card.MaterialCardView>
+        <TextView
+            android:id="@+id/tvWaktu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/monasanssemibold"
+            android:text="Hari ini, 08:30 WIB"
+            android:textColor="#16A34A"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="@+id/tvLokasiTps"
+            app:layout_constraintTop_toBottomOf="@+id/tvKendala" />
 
-            <!-- Nama Lokasi TPS -->
-            <TextView
-                android:id="@+id/textSender"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginEnd="8dp"
-                android:fontFamily="@font/monasansbold"
-                android:text="TPS Pasar Pagi Arengka"
-                android:textColor="#1E293B"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toStartOf="@+id/tvStatusBadge"
-                app:layout_constraintStart_toEndOf="@+id/cardImg"
-                app:layout_constraintTop_toTopOf="parent" />
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardBadgeStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="#FEF3C7"
+            app:cardCornerRadius="50dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <!-- Deskripsi Kendala -->
-            <TextView
-                android:id="@+id/textMessage"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="4dp"
-                android:fontFamily="@font/monasanssemibold"
-                android:text="Kendala: Tempat Sampah Penuh"
-                android:textColor="#475569"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/cardImg"
-                app:layout_constraintTop_toBottomOf="@+id/textSender" />
-
-            <!-- Waktu Laporan -->
-            <TextView
-                android:id="@+id/textTime"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="4dp"
-                android:fontFamily="@font/monasansregular"
-                android:text="Hari ini, 10:20 WIB"
-                android:textColor="#94A3B8"
-                android:textSize="11sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/cardImg"
-                app:layout_constraintTop_toBottomOf="@+id/textMessage" />
-
-            <!-- Badge Status di Kanan Atas -->
             <TextView
                 android:id="@+id/tvStatusBadge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#DCFCE7"
                 android:fontFamily="@font/monasansbold"
-                android:paddingHorizontal="8dp"
+                android:paddingHorizontal="10dp"
                 android:paddingVertical="3dp"
                 android:text="Pending"
-                android:textColor="#15803D"
-                android:textSize="10sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textColor="#D97706"
+                android:textSize="10sp" />
+        </com.google.android.material.card.MaterialCardView>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

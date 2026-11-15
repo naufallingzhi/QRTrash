@@ -1,56 +1,121 @@
 package com.example.qrtrash
 
-import android.content.Context
 import android.graphics.Color
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.qrtrash.databinding.ItemLaporanBinding
+
+// ================= KODE BARU MODUL 10: RECYCLERVIEW ADAPTER =================
+class LaporanAdapter(
+    private val laporanList: List<LaporanModel>,
+    private val onItemClick: (LaporanModel) -> Unit
+) : RecyclerView.Adapter<LaporanAdapter.LaporanViewHolder>() {
+
+    // ViewHolder menyimpan referensi komponen item_laporan.xml via ViewBinding
+    inner class LaporanViewHolder(val binding: ItemLaporanBinding) :
+        RecyclerView.ViewHolder(binding.root)
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LaporanViewHolder {
+        val binding = ItemLaporanBinding.inflate(
+            LayoutInflater.from(parent.context), parent, false
+        )
+        return LaporanViewHolder(binding)
+    }
+
+    override fun onBindViewHolder(holder: LaporanViewHolder, position: Int) {
+        val item = laporanList[position]
+
+        with(holder.binding) {
+            tvLokasiTps.text = item.lokasiTps
+            tvKendala.text = item.kendala
+            tvWaktu.text = item.waktu
+            tvStatusBadge.text = item.status
+
+            // Atur warna badge untuk setiap kondisi agar tidak terbawa saat baris di-recycle (Modul 10 Tahap 3.4)
+            when (item.status) {
+                "Pending" -> {
+                    cardBadgeStatus.setCardBackgroundColor(Color.parseColor("#FEF3C7"))
+                    tvStatusBadge.setTextColor(Color.parseColor("#D97706"))
+                }
+                "Diterima" -> {
+                    cardBadgeStatus.setCardBackgroundColor(Color.parseColor("#E0F2FE"))
+                    tvStatusBadge.setTextColor(Color.parseColor("#0284C7"))
+                }
+                else -> {
+                    cardBadgeStatus.setCardBackgroundColor(Color.parseColor("#DCFCE7"))
+                    tvStatusBadge.setTextColor(Color.parseColor("#15803D"))
+                }
+            }
+
+            // Memuat gambar dari URL menggunakan Glide
+            Glide.with(holder.itemView.context)
+                .load(item.imageUrl)
+                .placeholder(R.drawable.logoaplikasi)
+                .into(ivFotoLaporan)
+
+            // Aksi klik item diteruskan ke Fragment lewat lambda onItemClick
+            root.setOnClickListener {
+                onItemClick(item)
+            }
+        }
+    }
+
+    override fun getItemCount(): Int = laporanList.size
+}
+
+/*
+// ================= KODE LAMA MODUL 7: LISTVIEW ARRAYADAPTER (DIKOMENTARI UNTUK PERBANDINGAN) =================
+import android.content.Context
+import android.view.View
+import android.widget.ArrayAdapter
 import com.google.android.material.snackbar.Snackbar
 
 class LaporanAdapter(
     context: Context,
-    private val laporanList: List<LaporanModel>
-) : ArrayAdapter<LaporanModel>(context, 0, laporanList) {
+    private val listLaporan: List<LaporanModel>
+) : ArrayAdapter<LaporanModel>(context, 0, listLaporan) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val binding = ItemLaporanBinding.inflate(LayoutInflater.from(context), parent, false)
-        val view = binding.root
+        val binding: ItemLaporanBinding
+        val view: View
 
-        val data = laporanList[position]
+        if (convertView == null) {
+            binding = ItemLaporanBinding.inflate(LayoutInflater.from(context), parent, false)
+            view = binding.root
+            view.tag = binding
+        } else {
+            view = convertView
+            binding = view.tag as ItemLaporanBinding
+        }
 
-        // 1. Muat gambar dari URL ke ImageView menggunakan Glide (Modul 7 Tahap 4.6)
-        Glide.with(context)
-            .load(data.imageUrl)
-            .placeholder(R.drawable.logoaplikasi)
-            .error(R.drawable.logoaplikasi)
-            .into(binding.avatarImg)
-
-        // 2. Isi teks pada setiap komponen item
-        binding.textSender.text = data.lokasiTps
-        binding.textMessage.text = data.kendala
-        binding.textTime.text = data.waktu
+        val data = listLaporan[position]
+        binding.tvLokasiTps.text = data.lokasiTps
+        binding.tvKendala.text = data.kendala
+        binding.tvWaktu.text = data.waktu
         binding.tvStatusBadge.text = data.status
 
-        // Sesuaikan warna badge berdasarkan status laporan
         when (data.status) {
             "Pending" -> {
-                binding.tvStatusBadge.setBackgroundColor(Color.parseColor("#FEF3C7"))
+                binding.cardBadgeStatus.setCardBackgroundColor(Color.parseColor("#FEF3C7"))
                 binding.tvStatusBadge.setTextColor(Color.parseColor("#D97706"))
             }
             "Diterima" -> {
-                binding.tvStatusBadge.setBackgroundColor(Color.parseColor("#E0F2FE"))
+                binding.cardBadgeStatus.setCardBackgroundColor(Color.parseColor("#E0F2FE"))
                 binding.tvStatusBadge.setTextColor(Color.parseColor("#0284C7"))
             }
             "Selesai" -> {
-                binding.tvStatusBadge.setBackgroundColor(Color.parseColor("#DCFCE7"))
-                binding.tvStatusBadge.setTextColor(Color.parseColor("#16A34A"))
+                binding.cardBadgeStatus.setCardBackgroundColor(Color.parseColor("#DCFCE7"))
+                binding.tvStatusBadge.setTextColor(Color.parseColor("#15803D"))
             }
         }
 
-        // 3. Aksi klik pada setiap item memunculkan Snackbar (Modul 7 Tahap 4.8)
+        Glide.with(context)
+            .load(data.imageUrl)
+            .placeholder(R.drawable.logoaplikasi)
+            .into(binding.ivFotoLaporan)
+
         view.setOnClickListener {
             Snackbar.make(
                 parent,
@@ -62,3 +127,4 @@ class LaporanAdapter(
         return view
     }
 }
+*/

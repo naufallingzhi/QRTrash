@@ -44,6 +44,15 @@
             android:name=".petatps"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".TutorialActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- 7. Halaman Jadwal Truk TabLayout + ViewPager2 (Modul 10) -->
+        <activity
+            android:name=".JadwalTrukActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
