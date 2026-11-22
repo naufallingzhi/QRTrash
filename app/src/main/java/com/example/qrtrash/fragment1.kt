@@ -5,17 +5,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.qrtrash.data.AppDatabase
+import com.example.qrtrash.data.entity.LaporanEntity
 import com.example.qrtrash.databinding.FragmentFragment1Binding
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.launch
 
 class fragment1 : Fragment() {
 
     private var _binding: FragmentFragment1Binding? = null
     private val binding get() = _binding!!
 
-    // Mengambil data status "Pending" dari listOf terpusat di LaporanModel
-    private val dataPending = LaporanModel.semuaLaporan.filter { it.status == "Pending" }
+    private lateinit var db: AppDatabase
+    private lateinit var laporanAdapter: LaporanAdapter
+    private val listLaporan = mutableListOf<LaporanEntity>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,29 +33,51 @@ class fragment1 : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // ================= KODE BARU MODUL 10: RECYCLERVIEW =================
-        val laporanAdapter = LaporanAdapter(dataPending) { selectedItem ->
-            Snackbar.make(
-                binding.root,
-                "Laporan ${selectedItem.lokasiTps}: ${selectedItem.kendala} (${selectedItem.status})",
-                Snackbar.LENGTH_SHORT
-            ).show()
-        }
+        db = AppDatabase.getInstance(requireContext())
+        laporanAdapter = LaporanAdapter(
+            laporanList = listLaporan,
+            onItemClick = { selectedItem ->
+                Snackbar.make(
+                    binding.root,
+                    "${selectedItem.idTps}: ${selectedItem.kategoriMasalah} (${selectedItem.koordinatGps})",
+                    Snackbar.LENGTH_SHORT
+                ).show()
+            },
+            onDelete = { laporan ->
+                deleteLaporan(laporan)
+            }
+        )
 
         binding.rvLaporanItems.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = laporanAdapter
         }
+    }
 
-        /*
-        // ================= KODE LAMA MODUL 7: LISTVIEW (DIKOMENTARI) =================
-        val adapterLama = LaporanAdapter(requireContext(), dataPending)
-        binding.listLaporanItems.adapter = adapterLama
-        */
+    override fun onResume() {
+        super.onResume()
+        if (_binding != null) fetchLaporan()
+    }
+
+    private fun fetchLaporan() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            val result = db.laporanDao().getByStatus("Pending")
+            listLaporan.clear()
+            listLaporan.addAll(result)
+            laporanAdapter.notifyDataSetChanged()
+        }
+    }
+
+    private fun deleteLaporan(laporan: LaporanEntity) {
+        viewLifecycleOwner.lifecycleScope.launch {
+            db.laporanDao().delete(laporan)
+            fetchLaporan()
+        }
     }
 
     override fun onDestroyView() {
-        super.onDestroyView()
+        binding.rvLaporanItems.adapter = null
         _binding = null
+        super.onDestroyView()
     }
 }

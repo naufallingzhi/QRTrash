@@ -78,6 +78,12 @@ class activity_main : AppCompatActivity() {
         binding.navPeta.setOnClickListener {
             startActivity(Intent(this, petatps::class.java))
         }
+        binding.btnScanBanner.setOnClickListener {
+            startActivity(Intent(this, ScanQrActivity::class.java))
+        }
+        binding.fabMainScan.setOnClickListener {
+            startActivity(Intent(this, ScanQrActivity::class.java))
+        }
 
         // 5. Menu Dropdown Profil (Opsi Tutorial sudah dihapus sesuai permintaan)
         binding.cardAvatarContainer.setOnClickListener { view ->

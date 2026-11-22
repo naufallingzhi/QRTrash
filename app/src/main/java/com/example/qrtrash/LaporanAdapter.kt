@@ -5,15 +5,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.qrtrash.data.entity.LaporanEntity
 import com.example.qrtrash.databinding.ItemLaporanBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
-// ================= KODE BARU MODUL 10: RECYCLERVIEW ADAPTER =================
 class LaporanAdapter(
-    private val laporanList: List<LaporanModel>,
-    private val onItemClick: (LaporanModel) -> Unit
+    private val laporanList: List<LaporanEntity>,
+    private val onItemClick: (LaporanEntity) -> Unit,
+    private val onDelete: (LaporanEntity) -> Unit
 ) : RecyclerView.Adapter<LaporanAdapter.LaporanViewHolder>() {
 
-    // ViewHolder menyimpan referensi komponen item_laporan.xml via ViewBinding
     inner class LaporanViewHolder(val binding: ItemLaporanBinding) :
         RecyclerView.ViewHolder(binding.root)
 
@@ -28,12 +29,11 @@ class LaporanAdapter(
         val item = laporanList[position]
 
         with(holder.binding) {
-            tvLokasiTps.text = item.lokasiTps
-            tvKendala.text = item.kendala
-            tvWaktu.text = item.waktu
+            tvLokasiTps.text = "${item.idTps} • ${item.lokasiTps}"
+            tvKendala.text = "${item.kategoriMasalah} (${item.catatan})"
+            tvWaktu.text = item.waktuLaporan
             tvStatusBadge.text = item.status
 
-            // Atur warna badge untuk setiap kondisi agar tidak terbawa saat baris di-recycle (Modul 10 Tahap 3.4)
             when (item.status) {
                 "Pending" -> {
                     cardBadgeStatus.setCardBackgroundColor(Color.parseColor("#FEF3C7"))
@@ -49,82 +49,26 @@ class LaporanAdapter(
                 }
             }
 
-            // Memuat gambar dari URL menggunakan Glide
             Glide.with(holder.itemView.context)
                 .load(item.imageUrl)
                 .placeholder(R.drawable.logoaplikasi)
                 .into(ivFotoLaporan)
 
-            // Aksi klik item diteruskan ke Fragment lewat lambda onItemClick
             root.setOnClickListener {
                 onItemClick(item)
+            }
+
+            // Dialog Konfirmasi Hapus (Modul 12 Tahap 07)
+            btnDelete.setOnClickListener {
+                MaterialAlertDialogBuilder(holder.itemView.context)
+                    .setTitle("Hapus Laporan")
+                    .setMessage("Yakin ingin menghapus laporan ${item.idTps} ini?")
+                    .setPositiveButton("Ya") { _, _ -> onDelete(item) }
+                    .setNegativeButton("Batal", null)
+                    .show()
             }
         }
     }
 
     override fun getItemCount(): Int = laporanList.size
 }
-
-/*
-// ================= KODE LAMA MODUL 7: LISTVIEW ARRAYADAPTER (DIKOMENTARI UNTUK PERBANDINGAN) =================
-import android.content.Context
-import android.view.View
-import android.widget.ArrayAdapter
-import com.google.android.material.snackbar.Snackbar
-
-class LaporanAdapter(
-    context: Context,
-    private val listLaporan: List<LaporanModel>
-) : ArrayAdapter<LaporanModel>(context, 0, listLaporan) {
-
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val binding: ItemLaporanBinding
-        val view: View
-
-        if (convertView == null) {
-            binding = ItemLaporanBinding.inflate(LayoutInflater.from(context), parent, false)
-            view = binding.root
-            view.tag = binding
-        } else {
-            view = convertView
-            binding = view.tag as ItemLaporanBinding
-        }
-
-        val data = listLaporan[position]
-        binding.tvLokasiTps.text = data.lokasiTps
-        binding.tvKendala.text = data.kendala
-        binding.tvWaktu.text = data.waktu
-        binding.tvStatusBadge.text = data.status
-
-        when (data.status) {
-            "Pending" -> {
-                binding.cardBadgeStatus.setCardBackgroundColor(Color.parseColor("#FEF3C7"))
-                binding.tvStatusBadge.setTextColor(Color.parseColor("#D97706"))
-            }
-            "Diterima" -> {
-                binding.cardBadgeStatus.setCardBackgroundColor(Color.parseColor("#E0F2FE"))
-                binding.tvStatusBadge.setTextColor(Color.parseColor("#0284C7"))
-            }
-            "Selesai" -> {
-                binding.cardBadgeStatus.setCardBackgroundColor(Color.parseColor("#DCFCE7"))
-                binding.tvStatusBadge.setTextColor(Color.parseColor("#15803D"))
-            }
-        }
-
-        Glide.with(context)
-            .load(data.imageUrl)
-            .placeholder(R.drawable.logoaplikasi)
-            .into(binding.ivFotoLaporan)
-
-        view.setOnClickListener {
-            Snackbar.make(
-                parent,
-                "Laporan ${data.lokasiTps}: ${data.kendala} (${data.status})",
-                Snackbar.LENGTH_SHORT
-            ).show()
-        }
-
-        return view
-    }
-}
-*/

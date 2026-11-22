@@ -99,16 +99,22 @@
             android:layout_height="match_parent">
 
             <!-- ImageView untuk memuat gambar Peta Pekanbaru dari URL via Glide -->
-            <ImageView
-                android:id="@+id/ivMapPekanbaru"
+<!--            <ImageView-->
+<!--                android:id="@+id/ivMapPekanbaru"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:contentDescription="Peta TPS Pekanbaru"-->
+<!--                android:scaleType="centerCrop"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+            <!-- Ganti tag <ImageView android:id="@+id/ivMapPekanbaru" ... /> dengan MapView ini -->
+            <org.osmdroid.views.MapView
+                android:id="@+id/mapViewPekanbaru"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:contentDescription="Peta TPS Pekanbaru"
-                android:scaleType="centerCrop"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_height="match_parent" />
 
             <!-- Badge keterangan di pojok atas peta -->
             <com.google.android.material.card.MaterialCardView

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="240dp"
+    android:height="240dp"
+    android:viewportWidth="240"
+    android:viewportHeight="240">
+
+    <!-- Sudut Kiri Atas (Lapis Luar & Dalam) -->
+    <path
+        android:pathData="M10,55 L10,26 Q10,10 26,10 L55,10"
+        android:strokeColor="#15803D"
+        android:strokeWidth="3.5"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M18,55 L18,30 Q18,18 30,18 L55,18"
+        android:strokeColor="#86EFAC"
+        android:strokeWidth="3"
+        android:strokeLineCap="round" />
+
+    <!-- Sudut Kanan Atas -->
+    <path
+        android:pathData="M185,10 L214,10 Q230,10 230,26 L230,55"
+        android:strokeColor="#15803D"
+        android:strokeWidth="3.5"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M185,18 L210,18 Q222,18 222,30 L222,55"
+        android:strokeColor="#86EFAC"
+        android:strokeWidth="3"
+        android:strokeLineCap="round" />
+
+    <!-- Sudut Kiri Bawah -->
+    <path
+        android:pathData="M10,185 L10,214 Q10,230 26,230 L55,230"
+        android:strokeColor="#15803D"
+        android:strokeWidth="3.5"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M18,185 L18,210 Q18,222 30,222 L55,222"
+        android:strokeColor="#86EFAC"
+        android:strokeWidth="3"
+        android:strokeLineCap="round" />
+
+    <!-- Sudut Kanan Bawah -->
+    <path
+        android:pathData="M185,230 L214,230 Q230,230 230,214 L230,185"
+        android:strokeColor="#15803D"
+        android:strokeWidth="3.5"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M185,222 L210,222 Q222,222 222,210 L222,185"
+        android:strokeColor="#86EFAC"
+        android:strokeWidth="3"
+        android:strokeLineCap="round" />
+</vector>

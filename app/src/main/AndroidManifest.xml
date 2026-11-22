@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -52,6 +53,23 @@
         <!-- 7. Halaman Jadwal Truk TabLayout + ViewPager2 (Modul 10) -->
         <activity
             android:name=".JadwalTrukActivity"
+            android:exported="false" />
+        <activity
+            android:name=".data.AppDatabase"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".BuatLaporanActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".TinjauLaporanActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Halaman Pelaporan & Room Database (Modul 12) -->
+        <activity
+            android:name=".ScanQrActivity"
             android:exported="false" />
     </application>
 

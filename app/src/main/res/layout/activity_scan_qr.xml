@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0FDF4"
+    android:fitsSystemWindows="true"
+    tools:context=".ScanQrActivity">
+
+    <!-- Tombol Kembali Pojok Kiri Atas -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/btnBackScan"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        app:cardBackgroundColor="#F0FDF4"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="0dp"
+        app:strokeColor="#1E293B"
+        app:strokeWidth="1.5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_back"
+            app:tint="#1E293B" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Teks Instruksi Scan -->
+    <TextView
+        android:id="@+id/tvInstruksiScan"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="28dp"
+        android:fontFamily="@font/monasansbold"
+        android:gravity="center"
+        android:lineSpacingExtra="4dp"
+        android:text="Arahkan Kamera Ke QR CODE\nPada Tempat Sampah"
+        android:textColor="#0F172A"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBackScan" />
+
+    <!-- Area Bingkai QR (Simulasi Scan Interaktif) -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/areaScanQr"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:background="@drawable/bg_qr_frame"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintBottom_toTopOf="@+id/btnFlash"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvInstruksiScan">
+
+        <ImageView
+            android:id="@+id/ivQrHint"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:alpha="0.22"
+            android:src="@drawable/ic_qr"
+            app:tint="#15803D"
+            app:layout_constraintBottom_toTopOf="@+id/tvKetukSimulasi"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/tvKetukSimulasi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/monasanssemibold"
+            android:text="Ketuk bingkai untuk scan QR"
+            android:textColor="#15803D"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivQrHint" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Tombol Lampu Flash -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/btnFlash"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="10dp"
+        app:cardBackgroundColor="#F0FDF4"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="0dp"
+        app:strokeColor="#334155"
+        app:strokeWidth="1.5dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvLabelFlash"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/ivFlashIcon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_flash"
+            app:tint="#334155" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/tvLabelFlash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="44dp"
+        android:fontFamily="@font/monasansregular"
+        android:text="Nyalakan Lampu Flash"
+        android:textColor="#475569"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

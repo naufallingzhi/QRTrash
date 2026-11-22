@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4FBF7"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true"
+    android:scrollbars="none"
+    tools:context=".BuatLaporanActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="24dp"
+        android:paddingBottom="28dp">
+
+        <!-- Header: Back, Judul, & Tombol Bantuan -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btnBackBuat"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="20dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            app:strokeColor="#15803D"
+            app:strokeWidth="1.5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_back"
+                app:tint="#15803D" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/tvJudulBuat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/monasansbold"
+            android:text="Buat Laporan"
+            android:textColor="#0F172A"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btnBackBuat"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btnBackBuat" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btnBantuan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp"
+            app:strokeColor="#15803D"
+            app:strokeWidth="1dp"
+            app:layout_constraintBottom_toBottomOf="@+id/btnBackBuat"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btnBackBuat">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/monasanssemibold"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="5dp"
+                android:text="Bantuan"
+                android:textColor="#0F172A"
+                android:textSize="11sp" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Kartu Fasilitas Teridentifikasi -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardFasilitas"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="3dp"
+            app:strokeColor="#86EFAC"
+            app:strokeWidth="1.5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnBackBuat">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/boxIconTps"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    app:cardBackgroundColor="#15803D"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_trash"
+                        app:tint="#0F172A" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/tvFasilitasLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/monasansbold"
+                    android:text="Fasilitas teridentifikasi"
+                    android:textColor="#15803D"
+                    android:textSize="13sp"
+                    app:layout_constraintEnd_toStartOf="@+id/iconCheckTps"
+                    app:layout_constraintStart_toEndOf="@+id/boxIconTps"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvKodeTps"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/monasansbold"
+                    android:text="Tempat Sampah: TPS-PKU-012"
+                    android:textColor="#0F172A"
+                    android:textSize="11sp"
+                    app:layout_constraintEnd_toEndOf="@+id/tvFasilitasLabel"
+                    app:layout_constraintStart_toStartOf="@+id/tvFasilitasLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvFasilitasLabel" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="@+id/tvFasilitasLabel"
+                    app:layout_constraintStart_toStartOf="@+id/tvFasilitasLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvKodeTps">
+
+                    <ImageView
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:src="@drawable/ic_peta"
+                        app:tint="#0F172A" />
+
+                    <TextView
+                        android:id="@+id/tvAlamatTps"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/monasansregular"
+                        android:maxLines="1"
+                        android:text="Jl. Jenderal Sudirman"
+                        android:textColor="#64748B"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/iconCheckTps"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    app:cardBackgroundColor="#16A34A"
+                    app:cardCornerRadius="17dp"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_check"
+                        app:tint="#FFFFFF" />
+                </com.google.android.material.card.MaterialCardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Seksi Pilih Kendala -->
+        <TextView
+            android:id="@+id/tvSubKendala"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/monasanssemibold"
+            android:text="Pilih satu kendala"
+            android:textColor="#22C55E"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardFasilitas" />
+
+        <TextView
+            android:id="@+id/tvTitleKendala"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/monasansbold"
+            android:text="Apa yang terjadi?"
+            android:textColor="#1E293B"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSubKendala" />
+
+        <!-- Pilihan 1: Sampah Penuh -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardOpsiPenuh"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="2dp"
+            app:strokeColor="#86EFAC"
+            app:strokeWidth="1.5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitleKendala">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/boxIconPenuh"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    app:cardBackgroundColor="#F0FDF4"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="#15803D"
+                    app:strokeWidth="1.2dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_trash"
+                        app:tint="#15803D" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/tvOpsiPenuhTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/monasansbold"
+                    android:text="Sampah Penuh"
+                    android:textColor="#0F172A"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toTopOf="@+id/tvOpsiPenuhDesc"
+                    app:layout_constraintEnd_toStartOf="@+id/radioPenuh"
+                    app:layout_constraintStart_toEndOf="@+id/boxIconPenuh"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed" />
+
+                <TextView
+                    android:id="@+id/tvOpsiPenuhDesc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/monasansregular"
+                    android:text="Kapasitas sudah terlampaui"
+                    android:textColor="#475569"
+                    android:textSize="11sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/tvOpsiPenuhTitle"
+                    app:layout_constraintStart_toStartOf="@+id/tvOpsiPenuhTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/tvOpsiPenuhTitle" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/radioPenuh"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="#22C55E"
+                    app:strokeWidth="1.5dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/ivCheckPenuh"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_check"
+                        android:visibility="gone"
+                        app:tint="#FFFFFF" />
+                </com.google.android.material.card.MaterialCardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Pilihan 2: Tempat Sampah Rusak -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardOpsiRusak"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="2dp"
+            app:strokeColor="#86EFAC"
+            app:strokeWidth="1.5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardOpsiPenuh">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/boxIconRusak"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    app:cardBackgroundColor="#F0FDF4"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="#15803D"
+                    app:strokeWidth="1.2dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_delete"
+                        app:tint="#15803D" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/tvOpsiRusakTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/monasansbold"
+                    android:text="Tempat Sampah Rusak"
+                    android:textColor="#0F172A"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toTopOf="@+id/tvOpsiRusakDesc"
+                    app:layout_constraintEnd_toStartOf="@+id/radioRusak"
+                    app:layout_constraintStart_toEndOf="@+id/boxIconRusak"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed" />
+
+                <TextView
+                    android:id="@+id/tvOpsiRusakDesc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/monasansregular"
+                    android:text="Fasilitas tidak dapat digunakan"
+                    android:textColor="#475569"
+                    android:textSize="11sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/tvOpsiRusakTitle"
+                    app:layout_constraintStart_toStartOf="@+id/tvOpsiRusakTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/tvOpsiRusakTitle" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/radioRusak"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="#22C55E"
+                    app:strokeWidth="1.5dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/ivCheckRusak"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_check"
+                        android:visibility="gone"
+                        app:tint="#FFFFFF" />
+                </com.google.android.material.card.MaterialCardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Seksi Bukti Lapangan -->
+        <TextView
+            android:id="@+id/tvSubFoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/monasanssemibold"
+            android:text="Bukti lapangan"
+            android:textColor="#22C55E"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardOpsiRusak" />
+
+        <TextView
+            android:id="@+id/tvTitleFoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/monasansbold"
+            android:text="Ambil Foto Kondisi"
+            android:textColor="#1E293B"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSubFoto" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/monasansbold"
+            android:text="Wajib"
+            android:textColor="#EF4444"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvTitleFoto"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvTitleFoto" />
+
+        <!-- Area Preview Kamera -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardPreviewKamera"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="12dp"
+            app:cardBackgroundColor="#A7F3D0"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitleFoto">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="14dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/boxPreviewIcon"
+                    android:layout_width="58dp"
+                    android:layout_height="58dp"
+                    app:cardBackgroundColor="#15803D"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="0dp"
+                    app:layout_constraintBottom_toTopOf="@+id/tvPreviewLabel"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed">
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_trash"
+                        app:tint="#0F172A" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/tvPreviewLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/monasanssemibold"
+                    android:text="Preview kamera"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toTopOf="@+id/badgePosisiFoto"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/boxPreviewIcon" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/badgePosisiFoto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="#4ADE80"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/monasanssemibold"
+                        android:paddingHorizontal="14dp"
+                        android:paddingVertical="4dp"
+                        android:text="Posisikan kondisi tempat sampah dengan jelas"
+                        android:textColor="#FFFFFF"
+                        android:textSize="10sp" />
+                </com.google.android.material.card.MaterialCardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Tombol Jepret Kamera -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btnAmbilFotoOuter"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:strokeColor="#16A34A"
+            app:strokeWidth="1.5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardPreviewKamera">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnAmbilFoto"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                app:cardBackgroundColor="#16A34A"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="0dp">
+
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_camera"
+                    app:tint="#0F172A" />
+            </com.google.android.material.card.MaterialCardView>
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

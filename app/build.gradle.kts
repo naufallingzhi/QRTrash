@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -58,4 +59,13 @@ dependencies {
 
     // Dependency Baru Modul 10 (RecyclerView)
     implementation("androidx.recyclerview:recyclerview:1.3.2")
+
+    // Dependency Baru Modul 12: Room Database
+    val roomVersion = "2.7.2"
+    implementation("androidx.room:room-runtime:$roomVersion")
+    implementation("androidx.room:room-ktx:$roomVersion")
+    ksp("androidx.room:room-compiler:$roomVersion")
+
+    // Library Peta OpenStreetMap (osmdroid)
+    implementation("org.osmdroid:osmdroid-android:6.1.20")
 }
